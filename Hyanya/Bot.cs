@@ -9,13 +9,11 @@ using Discord;
 using Discord.WebSocket;
 using Discord.Commands;
 
-namespace Discord_Bot {
+namespace Hyanya {
     public class Bot {
         public Bot() { }
 
         public async Task Start() {
-            Configuration.Load();
-
             _client = new DiscordSocketClient(new DiscordSocketConfig() {
                 LogLevel = LogSeverity.Info
             });
@@ -31,7 +29,10 @@ namespace Discord_Bot {
             await _client.LoginAsync(TokenType.Bot, token);
             // Connect the client to Discord's gateway
             await _client.ConnectAsync();
-            await _client.SetGame(Configuration.Game);
+            foreach (SocketGuild guild in _client.Guilds) {
+                Configuration.Load(guild.Id);
+                await _client.SetGame(Configuration.activeServers[guild.Id].Game);
+            }
 
             // Block this task until the program is exited.
             await Task.Delay(-1);

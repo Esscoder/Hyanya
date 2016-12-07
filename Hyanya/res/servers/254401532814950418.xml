@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<server>
+    <configuration>
+        <GeneralPrefix>hya.</GeneralPrefix>
+        <Game>help to get help ❤</Game>
+        <Version>0.0.2</Version>
+    </configuration>
+    <players>
+        <player id="255575075749625858" name="Nyororo" class="ROGUE" level="1" exp="0" />
+    </players>
+</server>
